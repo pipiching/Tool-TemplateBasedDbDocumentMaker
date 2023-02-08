@@ -34,6 +34,10 @@
             this.btnConnTest = new System.Windows.Forms.Button();
             this.lbConnName = new System.Windows.Forms.Label();
             this.lbConnStr = new System.Windows.Forms.Label();
+            this.txtSystemDescription = new System.Windows.Forms.TextBox();
+            this.txtSystemName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtName
@@ -54,7 +58,7 @@
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.LightGreen;
-            this.btnCreate.Location = new System.Drawing.Point(250, 148);
+            this.btnCreate.Location = new System.Drawing.Point(230, 200);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(108, 39);
             this.btnCreate.TabIndex = 2;
@@ -64,7 +68,7 @@
             // 
             // btnConnTest
             // 
-            this.btnConnTest.Location = new System.Drawing.Point(12, 144);
+            this.btnConnTest.Location = new System.Drawing.Point(13, 207);
             this.btnConnTest.Name = "btnConnTest";
             this.btnConnTest.Size = new System.Drawing.Size(103, 25);
             this.btnConnTest.TabIndex = 3;
@@ -90,11 +94,47 @@
             this.lbConnStr.TabIndex = 5;
             this.lbConnStr.Text = "Conntion String";
             // 
+            // txtSystemDescription
+            // 
+            this.txtSystemDescription.Location = new System.Drawing.Point(109, 164);
+            this.txtSystemDescription.Name = "txtSystemDescription";
+            this.txtSystemDescription.Size = new System.Drawing.Size(186, 22);
+            this.txtSystemDescription.TabIndex = 20;
+            // 
+            // txtSystemName
+            // 
+            this.txtSystemName.Location = new System.Drawing.Point(109, 136);
+            this.txtSystemName.Name = "txtSystemName";
+            this.txtSystemName.Size = new System.Drawing.Size(186, 22);
+            this.txtSystemName.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 169);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 12);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "System Description:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 139);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 12);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "System Name:";
+            // 
             // FrmNewConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 199);
+            this.ClientSize = new System.Drawing.Size(370, 252);
+            this.Controls.Add(this.txtSystemDescription);
+            this.Controls.Add(this.txtSystemName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbConnStr);
             this.Controls.Add(this.lbConnName);
             this.Controls.Add(this.btnConnTest);
@@ -118,5 +158,9 @@
         private System.Windows.Forms.Button btnConnTest;
         private System.Windows.Forms.Label lbConnName;
         private System.Windows.Forms.Label lbConnStr;
+        private System.Windows.Forms.TextBox txtSystemDescription;
+        private System.Windows.Forms.TextBox txtSystemName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

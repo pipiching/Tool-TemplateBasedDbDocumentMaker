@@ -45,6 +45,7 @@
       <HintPath>..\packages\Jil.2.14.3\lib\net45\Jil.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
       <Private>True</Private>
@@ -100,6 +101,13 @@
     <Compile Include="Models\Column.cs" />
     <Compile Include="Models\ConfigContent.cs" />
     <Compile Include="Models\Connection.cs" />
+    <Compile Include="QueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForm.Designer.cs">
+      <DependentUpon>QueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ADOHelper.cs" />
     <Compile Include="Utility\DbManager.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Program.cs" />
@@ -126,6 +134,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QueryForm.resx">
+      <DependentUpon>QueryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DocTemplate\full template.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

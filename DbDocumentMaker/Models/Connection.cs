@@ -10,8 +10,10 @@ namespace DbDocumentMaker.Models
     {
         // Properties
         public string Name { get; set; }
-
+        
         public string Str { get; set; }
+        public string SystemName { get; set; } = string.Empty;
+        public string SystemDescription { get; set; } = string.Empty;
 
 
         // Methods

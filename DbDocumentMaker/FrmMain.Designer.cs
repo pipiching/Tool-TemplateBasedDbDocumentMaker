@@ -38,6 +38,8 @@
             this.btnSetting = new System.Windows.Forms.Button();
             this.lbTables = new System.Windows.Forms.Label();
             this.lbColumnInfo = new System.Windows.Forms.Label();
+            this.txtPOCO = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColumns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             // 
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerate.BackColor = System.Drawing.Color.LightGreen;
-            this.btnGenerate.Location = new System.Drawing.Point(657, 19);
+            this.btnGenerate.Location = new System.Drawing.Point(1265, 19);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(160, 38);
             this.btnGenerate.TabIndex = 0;
@@ -65,7 +67,7 @@
             this.dgvColumns.Name = "dgvColumns";
             this.dgvColumns.ReadOnly = true;
             this.dgvColumns.RowTemplate.Height = 24;
-            this.dgvColumns.Size = new System.Drawing.Size(639, 364);
+            this.dgvColumns.Size = new System.Drawing.Size(830, 364);
             this.dgvColumns.TabIndex = 1;
             // 
             // clbTables
@@ -124,7 +126,7 @@
             // 
             this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSetting.BackColor = System.Drawing.Color.BurlyWood;
-            this.btnSetting.Location = new System.Drawing.Point(823, 19);
+            this.btnSetting.Location = new System.Drawing.Point(1431, 19);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(80, 37);
             this.btnSetting.TabIndex = 7;
@@ -150,11 +152,33 @@
             this.lbColumnInfo.TabIndex = 9;
             this.lbColumnInfo.Text = "Column Info";
             // 
+            // txtPOCO
+            // 
+            this.txtPOCO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPOCO.Location = new System.Drawing.Point(1100, 89);
+            this.txtPOCO.Name = "txtPOCO";
+            this.txtPOCO.Size = new System.Drawing.Size(411, 364);
+            this.txtPOCO.TabIndex = 11;
+            this.txtPOCO.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(450, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(205, 37);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Generated Results Schema POCO Class";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 465);
+            this.ClientSize = new System.Drawing.Size(1523, 465);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtPOCO);
             this.Controls.Add(this.lbColumnInfo);
             this.Controls.Add(this.lbTables);
             this.Controls.Add(this.btnSetting);
@@ -186,6 +210,8 @@
         private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Label lbTables;
         private System.Windows.Forms.Label lbColumnInfo;
+        private System.Windows.Forms.RichTextBox txtPOCO;
+        private System.Windows.Forms.Button button1;
     }
 }
 

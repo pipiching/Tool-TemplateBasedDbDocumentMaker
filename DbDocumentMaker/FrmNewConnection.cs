@@ -33,6 +33,8 @@ namespace DbDocumentMaker
             _source.DataSource = NewConnection;
             txtName.DataBindings.Add("Text", this._source, "Name");
             txtConnStr.DataBindings.Add("Text", this._source, "Str");
+            txtSystemName.DataBindings.Add("Text", this._source, "SystemName");
+            txtSystemDescription.DataBindings.Add("Text", this._source, "SystemDescription");
         }
 
       

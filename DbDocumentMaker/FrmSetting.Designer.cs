@@ -39,6 +39,10 @@
             this.btnExportDocTemplate = new System.Windows.Forms.Button();
             this.btnRemoveDocTemplate = new System.Windows.Forms.Button();
             this.btnAddDocTemplate = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSystemName = new System.Windows.Forms.TextBox();
+            this.txtSystemDescription = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAddConnection
@@ -151,11 +155,49 @@
             this.btnAddDocTemplate.UseVisualStyleBackColor = true;
             this.btnAddDocTemplate.Click += new System.EventHandler(this.btnAddDocTemplate_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 225);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 12);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "System Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 255);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 12);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "System Description:";
+            // 
+            // txtSystemName
+            // 
+            this.txtSystemName.Location = new System.Drawing.Point(110, 222);
+            this.txtSystemName.Name = "txtSystemName";
+            this.txtSystemName.ReadOnly = true;
+            this.txtSystemName.Size = new System.Drawing.Size(186, 22);
+            this.txtSystemName.TabIndex = 15;
+            // 
+            // txtSystemDescription
+            // 
+            this.txtSystemDescription.Location = new System.Drawing.Point(110, 250);
+            this.txtSystemDescription.Name = "txtSystemDescription";
+            this.txtSystemDescription.ReadOnly = true;
+            this.txtSystemDescription.Size = new System.Drawing.Size(186, 22);
+            this.txtSystemDescription.TabIndex = 16;
+            // 
             // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 248);
+            this.ClientSize = new System.Drawing.Size(439, 342);
+            this.Controls.Add(this.txtSystemDescription);
+            this.Controls.Add(this.txtSystemName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddDocTemplate);
             this.Controls.Add(this.btnRemoveDocTemplate);
             this.Controls.Add(this.btnExportDocTemplate);
@@ -188,5 +230,9 @@
         private System.Windows.Forms.Button btnExportDocTemplate;
         private System.Windows.Forms.Button btnRemoveDocTemplate;
         private System.Windows.Forms.Button btnAddDocTemplate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSystemName;
+        private System.Windows.Forms.TextBox txtSystemDescription;
     }
 }

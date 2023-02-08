@@ -78,6 +78,8 @@ namespace DbDocumentMaker
                     cbConnection.Items.RemoveAt(cbConnection.SelectedIndex);
                     cbConnection.Text = string.Empty;
                     txtConnStr.Text = string.Empty;
+                    txtSystemName.Text = string.Empty;
+                    txtSystemDescription.Text = string.Empty;
                 }
             }
             else
@@ -93,10 +95,14 @@ namespace DbDocumentMaker
             {
                 var selectedCandidate = cbConnection.Items[cbConnection.SelectedIndex] as Connection;
                 txtConnStr.Text = selectedCandidate.Str;
+                txtSystemName.Text = selectedCandidate.SystemName;
+                txtSystemDescription.Text = selectedCandidate.SystemDescription;
             }
             else
             {
                 txtConnStr.Text = string.Empty;
+                txtSystemName.Text = string.Empty;
+                txtSystemDescription.Text = string.Empty;
             }
         }
 
