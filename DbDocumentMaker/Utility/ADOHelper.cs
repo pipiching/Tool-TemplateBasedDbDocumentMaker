@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DbDocumentMaker.Utility
 {
@@ -121,7 +119,7 @@ namespace DbDocumentMaker.Utility
                                     break;
                                 }
                             case "ColumnOrdinal":
-                                {                             
+                                {
                                     qf.ColumnOrdinal = Convert.ToInt32(SchemaTable.Rows[i][j]);
                                     break;
                                 }
@@ -406,6 +404,12 @@ namespace DbDocumentMaker.Utility
                         case "tinyint":
                             {
                                 result[i + 1] = string.Format("{0}public byte {1} {{ get; set; }} //(tinyint{2})", LinePrefix, Columns[i].ColumnName, AllowNull);
+                                break;
+                            }
+
+                        case "smallint":
+                            {
+                                result[i + 1] = string.Format("{0}public short {1} {{ get; set; }} //(smallint{2})", LinePrefix, Columns[i].ColumnName, AllowNull);
                                 break;
                             }
 

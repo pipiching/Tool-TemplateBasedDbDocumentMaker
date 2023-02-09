@@ -1,21 +1,11 @@
-﻿using Dapper;
-using DbDocumentMaker.Models;
+﻿using DbDocumentMaker.Models;
 using DbDocumentMaker.Utility;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
-using NPOI.SS.Formula.Functions;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DbDocumentMaker
 {
@@ -106,7 +96,7 @@ namespace DbDocumentMaker
                             Description = c.Description,
                             ColumnSize = c.Length,
                             NumericScale = c.NumericScale,
-                            NumericPrecision =c.NumericPrecision
+                            NumericPrecision = c.NumericPrecision
 
                         }).ToArray();
 
@@ -119,12 +109,12 @@ namespace DbDocumentMaker
             {
                 try
                 {
-                   /*
-                    if (char.IsNumber(Convert.ToChar(Columns[i].ColumnName.Substring(0, 1))))
-                    {   
-                        Columns[i].ColumnName = "_" + Columns[i].ColumnName;
-                    }
-                    */
+                    /*
+                     if (char.IsNumber(Convert.ToChar(Columns[i].ColumnName.Substring(0, 1))))
+                     {   
+                         Columns[i].ColumnName = "_" + Columns[i].ColumnName;
+                     }
+                     */
                     string AllowNull = ", null";
                     if (Columns[i].Nullable == false)
                         AllowNull = ", not null";
@@ -143,84 +133,90 @@ namespace DbDocumentMaker
                         result.Add(string.Format("{0}public string {1} {{ get; set; }} //(({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].Type, AllowNull));
                     }
 
-                        switch (Columns[i].Type ?? "")
+                    switch (Columns[i].Type ?? "")
                     {
 
                         case "bigint":
                             {
-                                result.Add( string.Format("{0}public long {1} {{ get; set; }} //(bigint{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public long {1} {{ get; set; }} //(bigint{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "binary":
                             {
-                                result.Add( string.Format("{0}public byte[] {1} {{ get; set; }} //(binary({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
+                                result.Add(string.Format("{0}public byte[] {1} {{ get; set; }} //(binary({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
                                 break;
                             }
 
                         case "bit":
                             {
-                                result.Add( string.Format("{0}public bool {1} {{ get; set; }} //(bit{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public bool {1} {{ get; set; }} //(bit{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "char":
                             {
-                                result.Add( string.Format("{0}public string {1} {{ get; set; }} //(char({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
+                                result.Add(string.Format("{0}public string {1} {{ get; set; }} //(char({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
                                 break;
                             }
 
                         case "date":
                             {
-                                result.Add( string.Format("{0}public DateTime {1} {{ get; set; }} //(date{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public DateTime {1} {{ get; set; }} //(date{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "datetime":
                             {
-                                result.Add( string.Format("{0}public DateTime {1} {{ get; set; }} //(datetime{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public DateTime {1} {{ get; set; }} //(datetime{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "datetime2":
                             {
-                                result.Add( string.Format("{0}public DateTime {1} {{ get; set; }} //(datetime2({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].NumericScale, AllowNull));
+                                result.Add(string.Format("{0}public DateTime {1} {{ get; set; }} //(datetime2({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].NumericScale, AllowNull));
                                 break;
                             }
 
                         case "datetimeoffset":
                             {
-                                result.Add( string.Format("{0}public DateTimeOffset {1} {{ get; set; }} //(datetimeoffset{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public DateTimeOffset {1} {{ get; set; }} //(datetimeoffset{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "decimal":
                             {
-                                result.Add( string.Format("{0}public decimal {1} {{ get; set; }} //(decimal({2},{3}){4})", LinePrefix, Columns[i].ColumnName, Columns[i].NumericPrecision, Columns[i].NumericScale, AllowNull));
+                                result.Add(string.Format("{0}public decimal {1} {{ get; set; }} //(decimal({2},{3}){4})", LinePrefix, Columns[i].ColumnName, Columns[i].NumericPrecision, Columns[i].NumericScale, AllowNull));
                                 break;
                             }
 
                         case "float":
                             {
-                                result.Add( string.Format("{0}public double {1} {{ get; set; }} //(float{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public double {1} {{ get; set; }} //(float{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "image":
                             {
-                                result.Add( string.Format("{0}public byte[] {1} {{ get; set; }} //(image{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public byte[] {1} {{ get; set; }} //(image{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "int":
                             {
-                                result.Add( string.Format("{0}public int {1} {{ get; set; }} //(int{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public int {1} {{ get; set; }} //(int{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                break;
+                            }
+
+                        case "smallint":
+                            {
+                                result.Add(string.Format("{0}public short {1} {{ get; set; }} //(smallint{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "money":
                             {
-                                result.Add( string.Format("{0}public decimal {1} {{ get; set; }} //(money{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public decimal {1} {{ get; set; }} //(money{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
@@ -232,7 +228,7 @@ namespace DbDocumentMaker
                                 //}
                                 //else
                                 //{
-                                    result.Add( string.Format("{0}public string {1} {{ get; set; }} //(nchar({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
+                                result.Add(string.Format("{0}public string {1} {{ get; set; }} //(nchar({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
                                 //}
 
                                 break;
@@ -240,7 +236,7 @@ namespace DbDocumentMaker
 
                         case "ntext":
                             {
-                                result.Add( string.Format("{0}public string {1} {{ get; set; }} //(ntext{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public string {1} {{ get; set; }} //(ntext{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
@@ -252,7 +248,7 @@ namespace DbDocumentMaker
                                 //}
                                 //else
                                 //{
-                                    result.Add( string.Format("{0}public string {1} {{ get; set; }} //(nvarchar({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
+                                result.Add(string.Format("{0}public string {1} {{ get; set; }} //(nvarchar({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].ColumnSize, AllowNull));
                                 //}
 
                                 break;
@@ -260,49 +256,49 @@ namespace DbDocumentMaker
 
                         case "real":
                             {
-                                result.Add( string.Format("{0}public Single {1} {{ get; set; }} //(real({2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public Single {1} {{ get; set; }} //(real({2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "smalldatetime":
                             {
-                                result.Add( string.Format("{0}public DateTime {1} {{ get; set; }} //(smalldatetime{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public DateTime {1} {{ get; set; }} //(smalldatetime{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "sql_variant":
                             {
-                                result.Add( string.Format("{0}public object {1} {{ get; set; }} //(sql_variant{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public object {1} {{ get; set; }} //(sql_variant{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "text":
                             {
-                                result.Add( string.Format("{0}public string {1} {{ get; set; }} //(text{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public string {1} {{ get; set; }} //(text{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "time":
                             {
-                                result.Add( string.Format("{0}public DateTime {1} {{ get; set; }} //(time({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].NumericScale, AllowNull));
+                                result.Add(string.Format("{0}public DateTime {1} {{ get; set; }} //(time({2}){3})", LinePrefix, Columns[i].ColumnName, Columns[i].NumericScale, AllowNull));
                                 break;
                             }
 
                         case "timestamp":
                             {
-                                result.Add( string.Format("{0}public byte[] {1} {{ get; set; }} //(timestamp{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public byte[] {1} {{ get; set; }} //(timestamp{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "tinyint":
                             {
-                                result.Add( string.Format("{0}public byte {1} {{ get; set; }} //(tinyint{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public byte {1} {{ get; set; }} //(tinyint{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
                         case "uniqueidentifier":
                             {
-                                result.Add( string.Format("{0}public Guid {1} {{ get; set; }} //(uniqueidentifier{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
+                                result.Add(string.Format("{0}public Guid {1} {{ get; set; }} //(uniqueidentifier{2})", LinePrefix, Columns[i].ColumnName, AllowNull));
                                 break;
                             }
 
@@ -359,7 +355,7 @@ namespace DbDocumentMaker
 
                                     case "Microsoft.SqlServer.Types.SqlGeometry": // geometry
                                         {
-                                            result.Add( string.Format("{0}public Microsoft.SqlServer.Types.SqlGeography {1} {{ get; set; }} //({2}{3})", LinePrefix, Columns[i].ColumnName, Columns[i].Type, AllowNull));
+                                            result.Add(string.Format("{0}public Microsoft.SqlServer.Types.SqlGeography {1} {{ get; set; }} //({2}{3})", LinePrefix, Columns[i].ColumnName, Columns[i].Type, AllowNull));
                                             break;
                                         }
 
@@ -375,7 +371,7 @@ namespace DbDocumentMaker
                 }
             }
             result.Add("}");
-         //   result[Columns.Count + 1] = "}";
+            //   result[Columns.Count + 1] = "}";
             return result;
         }
 
@@ -456,7 +452,7 @@ namespace DbDocumentMaker
                     MsgBoxHelper.Error("Failure: " + ex.Message);
                 }
 
-                
+
             }
             else
             { MsgBoxHelper.Warning("Please select table!"); }
@@ -468,11 +464,11 @@ namespace DbDocumentMaker
         {
             var tableName = string.Empty;
             if (clbTables.SelectedIndex > -1)
-            { 
+            {
                 tableName = (clbTables.Items[clbTables.SelectedIndex] as Table).TableName;
                 ShowTableColumns(tableName);
 
-                var POCO= GenerateCodeCS(tableName);
+                var POCO = GenerateCodeCS(tableName);
                 txtPOCO.Text = "";
                 foreach (var item in POCO)
                 {
@@ -530,7 +526,7 @@ namespace DbDocumentMaker
                         _dbManager.LoadTables(Config.GetInstance().Content.CurrentConnection.Str);
                         ShowTables(_dbManager.DbTables);
                     }
-                    
+
                 }
             }
         }
